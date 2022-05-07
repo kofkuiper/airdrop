@@ -32,6 +32,11 @@ const config: HardhatUserConfig = {
       url: 'https://rei-rpc.moonrhythm.io',
       chainId: 55555,
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : []
+    },
+    reitestnet: {
+      url: 'https://rei-testnet-rpc.moonrhythm.io',
+      chainId: 55556,
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : []
     }
   },
   etherscan: {
