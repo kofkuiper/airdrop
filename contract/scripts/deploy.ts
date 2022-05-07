@@ -1,11 +1,12 @@
 import { ethers } from 'hardhat'
 import { Airdrop__factory } from '../typechain'
 
-const signer = ''
+// const signer = ''
 
 async function main() {
-  const C = new Airdrop__factory((await ethers.getSigners())[0])
-  const c = await C.deploy(signer)
+  const [signer] = await ethers.getSigners()
+  const C = new Airdrop__factory(signer)
+  const c = await C.deploy(signer.address)
   await c.deployed()
 
   console.log('Airdrop deployed to:', c.address)
