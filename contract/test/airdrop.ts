@@ -2,10 +2,7 @@ import { expect } from "chai";
 import { arrayify } from "ethers/lib/utils";
 import { ethers } from "hardhat";
 import { BigNumber, Signer } from "ethers";
-import * as dotenv from "dotenv";
 import { Airdrop, Airdrop__factory } from "../typechain";
-
-dotenv.config();
 
 function toWei(value: Number) {
     return ethers.utils.parseEther(value.toString())
@@ -19,9 +16,6 @@ describe("Airdrop test", function () {
     let airdrop: Airdrop
     let signer: Signer
     let claimer: Signer
-
-    // Private key of signer
-    const privateKey = process.env.PRIVATE_KEY ? process.env.PRIVATE_KEY : ''
 
     beforeEach(async function () {
         [signer, claimer] = await ethers.getSigners()
