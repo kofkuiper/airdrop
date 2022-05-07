@@ -6,23 +6,23 @@ import '@nomiclabs/hardhat-waffle'
 import '@typechain/hardhat'
 import 'solidity-coverage'
 const {
-    getEtherscanEndpoints,
+  getEtherscanEndpoints,
 } = require('@nomiclabs/hardhat-etherscan/dist/src/network/prober')
 
 dotenv.config()
 
 const chainConfig: any = {
   rei: {
-      chainId: 55555,
-      urls: {
-          apiURL: 'https://reiscan.com/api',
-          browserURL: 'https://reiscan.com/'
-      }
+    chainId: 55555,
+    urls: {
+      apiURL: 'https://reiscan.com/api',
+      browserURL: 'https://reiscan.com/'
+    }
   }
 }
 
 subtask('verify:get-etherscan-endpoint').setAction(async (_, { network }) =>
-    getEtherscanEndpoints(network.provider, network.name, chainConfig)
+  getEtherscanEndpoints(network.provider, network.name, chainConfig)
 )
 
 const config: HardhatUserConfig = {
@@ -36,7 +36,7 @@ const config: HardhatUserConfig = {
     reitestnet: {
       url: 'https://rei-testnet-rpc.moonrhythm.io',
       chainId: 55556,
-      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : []
+      accounts: process.env.PRIVATE_KEY && process.env.PRIVATE_KEY_1 ? [process.env.PRIVATE_KEY, process.env.PRIVATE_KEY_1] : []
     }
   },
   etherscan: {
